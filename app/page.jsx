@@ -37,30 +37,61 @@ const advantages = [
   }
 ];
 
-const uses = ["家具连接件预钻孔", "柜体与门板深孔加工", "木工安装现场配套", "门店陈列与电商零售"];
+const products = [
+  {
+    name: "深孔钻",
+    image: "/images/deep-hole-drill-ai.png",
+    badge: "木工深孔加工",
+    description: "适用于家具安装、柜体板材、门板连接件预钻孔，主打稳定开孔、顺畅排屑和批量配货。",
+    points: ["独立盒装", "深孔定位", "多规格供货"]
+  },
+  {
+    name: "多功能三角钻",
+    image: "/images/triangle-drill-ai.png",
+    badge: "多材质开孔",
+    description: "三角钻尖设计，适合瓷砖、玻璃、木板、塑料等材质开孔，适用于装修安装、五金门店和工具批发配货。",
+    points: ["三角钻尖", "开孔稳定", "适用面广"]
+  },
+  {
+    name: "十字三角钻",
+    image: "/images/cross-triangle-drill-ai.png",
+    badge: "金色十字钻尖",
+    description: "十字三角钻尖结构，兼顾定位与切削效率，适合瓷砖、玻璃、木板等多材质开孔。",
+    points: ["十字钻尖", "定位更稳", "金色涂层"]
+  },
+  {
+    name: "锯齿钻",
+    image: "/images/sawtooth-drill-ai.png",
+    badge: "红色锯齿刃口",
+    description: "锯齿刃口增强切削咬合，适合装修安装、板材开孔和多场景工具配套。",
+    points: ["锯齿切削", "入料利落", "红色涂层"]
+  }
+];
+
+const uses = ["家具连接件预钻孔", "柜体与门板深孔加工", "瓷砖 / 玻璃 / 木板开孔", "五金门店与电商零售"];
 
 const specs = [
-  ["产品名称", "深孔钻"],
-  ["适用材质", "木板 / 家具板 / 复合板"],
-  ["包装方式", "独立透明塑盒"],
+  ["主推产品", "深孔钻 / 多功能三角钻 / 十字三角钻 / 锯齿钻"],
+  ["适用材质", "木板 / 家具板 / 复合板 / 瓷砖 / 玻璃 / 塑料"],
+  ["包装方式", "盒装或按采购需求配货"],
   ["供货模式", "现货批发 / 样品咨询 / 规格组合"],
-  ["推荐客户", "五金门店、工具批发、家具安装、工程采购"]
+  ["推荐客户", "五金门店、工具批发、装修安装、工程采购"]
 ];
 
 export default function HomePage() {
   return (
     <main className="site-shell">
       <header className="nav">
-        <a className="brand" href="#top" aria-label="深孔钻产品官网首页">
+        <a className="brand" href="#top" aria-label="五金钻头产品官网首页">
           <span className="brandMark">
             <Wrench size={25} strokeWidth={2.4} />
           </span>
-          <span>深孔钻系列</span>
+          <span>五金钻头系列</span>
         </a>
         <nav className="navLinks" aria-label="页面导航">
+          <a href="#products">产品中心</a>
           <a href="#advantages">产品优势</a>
           <a href="#use">应用场景</a>
-          <a href="#specs">规格信息</a>
           <a href="#contact">联系咨询</a>
         </nav>
         <a className="navCta" href="#contact">
@@ -73,27 +104,27 @@ export default function HomePage() {
         <div className="heroCopy">
           <p className="eyebrow">
             <Sparkles size={18} />
-            五金工具 · 木工深孔加工
+            五金工具 · 木工与装修开孔
           </p>
           <h1>
-            <span className="headlineMain">深孔钻产品</span>
+            <span className="headlineMain">钻头产品系列</span>
             <span className="headlineAccent">稳定开孔</span>
             <span className="headlineAccent">顺畅排屑</span>
           </h1>
           <p className="heroLead">
-            面向家具安装、木工板材、五金门店与批发渠道的深孔钻产品。独立塑盒包装，便于运输收纳，支持多规格配货与长期供货咨询。
+            面向家具安装、木工板材、瓷砖玻璃开孔、五金门店与批发渠道的钻头产品。支持多规格配货、样品咨询与长期供货合作。
           </p>
           <div className="heroActions">
             <a className="primaryBtn" href="#contact">
               立即咨询报价
               <ArrowRight size={20} />
             </a>
-            <a className="secondaryBtn" href="#specs">查看产品参数</a>
+            <a className="secondaryBtn" href="#products">查看产品系列</a>
           </div>
           <div className="trustStrip" aria-label="产品核心卖点">
             <span>
               <BadgeCheck size={19} />
-              盒装现货
+              现货配货
             </span>
             <span>
               <ShieldCheck size={19} />
@@ -115,9 +146,35 @@ export default function HomePage() {
             priority
           />
           <div className="visualNote">
-            <strong>Deep Hole Drill</strong>
-            <span>适合木工板材与家具安装预钻孔</span>
+            <strong>Drill Bits Series</strong>
+            <span>深孔钻 / 多功能三角钻 · 支持批发配货</span>
           </div>
+        </div>
+      </section>
+
+      <section id="products" className="sectionBlock">
+        <div className="sectionHeading">
+          <p>Product Center</p>
+          <h2>主推产品</h2>
+        </div>
+        <div className="productGrid">
+          {products.map((product) => (
+            <article className="productCard" key={product.name}>
+              <div className="productPhoto">
+                <Image src={product.image} alt={product.name} width={760} height={520} />
+              </div>
+              <div className="productBody">
+                <span>{product.badge}</span>
+                <h3>{product.name}</h3>
+                <p>{product.description}</p>
+                <div className="productTags">
+                  {product.points.map((point) => (
+                    <em key={point}>{point}</em>
+                  ))}
+                </div>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
@@ -148,9 +205,9 @@ export default function HomePage() {
             <Factory size={18} />
             Application
           </p>
-          <h2>适用于木工、家具、五金配货等高频场景</h2>
+          <h2>适用于木工、装修、五金配货等高频场景</h2>
           <p>
-            页面可继续扩展为完整官网：后续加入品牌名、真实规格表、详情图、工厂照片、联系方式，即可用于推广和询盘转化。
+            产品覆盖木工深孔预钻和多材质开孔需求，适合门店陈列、电商零售、装修安装团队和批发渠道快速配货。
           </p>
         </div>
         <div className="useList">
@@ -184,7 +241,7 @@ export default function HomePage() {
             <Phone size={18} />
             Inquiry
           </p>
-          <h2>获取深孔钻报价与规格清单</h2>
+          <h2>获取钻头产品报价与规格清单</h2>
           <p>
             支持样品咨询、批量采购、门店配货和长期供货合作。把你的电话、微信或邮箱替换到这里，就可以作为官网询盘入口。
           </p>
